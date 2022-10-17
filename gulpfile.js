@@ -8,7 +8,6 @@ const concat = require('gulp-concat');
 
 const sassFiles = './src/sass/style.scss'
 const jsFiles = [
-    './src/js/all.min.js',
     './src/js/animate-scripts.js',
     './node_modules/bootstrap/dist/js/bootstrap.js',
     './src/js/popper.min.js',
@@ -22,7 +21,7 @@ function css(cb) {
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([autoprefixer, cssnano]))
-    .pipe(sourcemaps.write('.'))
+    // .pipe(sourcemaps.write('.'))
     .pipe(dest('.'))
     cb();
 }
@@ -31,11 +30,12 @@ function js(cb) {
     src(jsFiles)
     .pipe(sourcemaps.init())
     .pipe(concat('scripts.js'))
-    .pipe(sourcemaps.write('.'))
+    // .pipe(sourcemaps.write('.'))
     .pipe(dest('.'))
     cb();
 }
 
 exports.default = function() {
     watch([sassFiles, './src/js/*.js'], series(css, js));
+    // watch(sassFiles, series(css));
 };

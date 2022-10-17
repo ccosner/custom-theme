@@ -64,21 +64,6 @@ function cc_admin_styles_and_scripts() {
 }
 add_action('admin_enqueue_scripts', 'cc_admin_styles_and_scripts');
 
-function cc_defer_scripts( $tag, $handle, $src ) {
-
-	// The handles of the enqueued scripts we want to defer
-	$defer_scripts = array( 
-		'scripts'
-	);
-
-    if ( in_array( $handle, $defer_scripts ) ) {
-        return '<script defer src="' . $src . '" type="text/javascript"></script>' . "\n";
-    }
-    
-    return $tag;
-} 
-add_filter( 'script_loader_tag', 'cc_defer_scripts', 10, 3 );
-
 // Adds classes body element to page/blog specific css
 function cc_body_class($classes) {
     if (is_singular('page')) {
@@ -104,7 +89,7 @@ function cc_widgets_init() {
         'description'   => 'This is the widget area in the footer.',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
-        'before_title'  => '<h3 class="widget-title sr-only">',
+        'before_title'  => '<h3 class="widget-title visually-hidden">',
         'after_title'   => '</h3>',
     ));
     register_sidebar(array(
@@ -153,7 +138,7 @@ add_filter('upload_mimes', 'cc_mime_types');
 // Replaces the excerpt "Read More" text by a link
 function cc_excerpt_more($more) {
     global $post;
-    return '...<br><a class="moretag" href="' . get_permalink($post->ID) . '">Read more... <span class="sr-only">' . get_the_title($post->ID) . '</span></a>';
+    return '...<br><a class="moretag" href="' . get_permalink($post->ID) . '">Read more... <span class="visually-hidden">' . get_the_title($post->ID) . '</span></a>';
 }
 add_filter('excerpt_more', 'cc_excerpt_more');
 //

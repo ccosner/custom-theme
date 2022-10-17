@@ -16,17 +16,21 @@ $bg_video = get_field('background_video');
 ?>
 <div class="content" id="content">
 	<div class="container-fluid">
+
 		<div class="heading">
 			<div class="row">
-				<div class="col col-md-6 offset-md-3">
+				<div class="heading-col">
 					<h1 class="project-title"><?php the_title(); ?></h1>
 					<div class="project-scope"><?php echo $proj_scope ?: ''; ?></div>
 					<div class="project-intro"><?php echo $proj_intro ?: ''; ?></div>
 				</div>
 			</div>
 		</div>
-		<?php the_content(); ?>
-	</div>
+
+    </div>
+
+	<?php the_content(); ?>
+    
 </div>
 
 <?php if ($bg_video) { ?>

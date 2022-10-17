@@ -17,13 +17,13 @@
 	<body <?php body_class(); ?>>
 
 		<nav class="navbar">
-			<a href="#main" class="sr-only" role="navigation" aria-label="Skip navigation">Skip to the main content</a>
+			<a href="#main" class="visually-hidden" role="navigation" aria-label="Skip navigation">Skip to the main content</a>
 			<div class="container-fluid">
 
 				<a class="mr-auto branding" href="<?php echo home_url(); ?>"></a>
 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="sr-only">Menu toggle</span><i class="fas fa-bars" title="Menu toggle"></i>
+					<span class="visually-hidden">Menu toggle</span><i class="fas fa-bars" title="Menu toggle"></i>
 				</button>
 				
 				<div class="collapse navbar-collapse" id="main-menu" aria-label="Main menu">
